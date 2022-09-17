@@ -3,7 +3,13 @@
 .home {
 
   .intro {
+    img {
+      .img-bordered();
 
+      @media (max-width : @phone) {
+        width : 70%;
+      }
+    }
     h2 {
       padding: 15px;
     }
@@ -11,8 +17,8 @@
     p {
       padding:0 15px;
     }
-
-  }
+    
+    
 
   .music-images {
     display: flex;
@@ -58,7 +64,10 @@
       }
 
       .btn {
+        background-color: blue;
+        color: white;
       }
+    }
     }
 
     .actual-img {
