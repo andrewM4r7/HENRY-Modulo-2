@@ -13,20 +13,36 @@
   <button class='boton'>AJAX!</button>
   <script type="text/javascript">
     var index = 1;
-    $('.boton').click(function () {
-      // GET AJAX
-      $.get("https://jsonplaceholder.typicode.com/photos/" + index, function (data) {
-        // vanilla javascript
-        var img = document.createElement('img');
-        img.src = dataAca.url;
-        var title = document.createElement('h3');
-        title.textContent = dataAca.title;
-        $('#respuesta').append(img);
-        $('#respuesta').append(title);
-        index++;
-      });
+    // $('.boton').click(function () {
+    //   // GET AJAX
+    //   // $.get("https://jsonplaceholder.typicode.com/photos/" + index, function (data) {
+    //   //   // vanilla javascript
+    //   //   var img = document.createElement('img');
+    //   //   img.src = dataAca.url;
+    //   //   var title = document.createElement('h3');
+    //   //   title.textContent = dataAca.title;
+    //   //   $('#respuesta').append(img);
+    //   //   $('#respuesta').append(title);
+    //   //   index++;
+    //   // });
 
-    });
+
+    // });
+    let button = document.getElementsByClassName('boton');
+    button[0].addEventListener('click', function(e){
+      fetch("https://jsonplaceholder.typicode.com/photos/" + index)
+      .then(data => data.json())
+      .then(obj => {
+        var img = document.createElement('img');
+        img.src = obj.url;
+        var title = document.createElement('h3');
+        title.textContent = obj.title;
+        document.getElementById('respuesta').appendChild(img);
+        document.getElementById('respuesta').appendChild(title);
+        index++;
+      })
+
+    })
   </script>
 </body>
 
